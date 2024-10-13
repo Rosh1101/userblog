@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/panel.css">
+    <title>User Data</title>
+</head>
+<body>
+
+    <ul>
+        <li><a href="panel/mypanel">My Panel</a></li>
+        <li><a href="">User Panel</a></li>
+        <li><a href="#">settings</a></li>
+        <li><a href="#">Raise query</a></li>
+    </ul>
+
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>IP</th>
+        </tr>
+
+        <% user_data.forEach(user => { %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.age %></td>
+            <td><%= user.address %></td>
+        </tr>
+        <% }); %>
+      
+    </table>
+    
+</body>
+</html>

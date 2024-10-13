@@ -1,0 +1,30 @@
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;   
+    overflow: hidden;
+    background-color: black;
+
+    display: flex;
+    justify-content:space-evenly;
+}
+
+li{
+    display: inline;
+    padding: 10px;
+    
+}
+
+li a{
+    font-size: large;
+  color: white;
+  text-align: center;
+  text-decoration: none;    
+}
+
+table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-top: 50px;
+}

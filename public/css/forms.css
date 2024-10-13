@@ -1,0 +1,16 @@
+#container{
+    border: 1px solid black;
+    display: block;
+    width: 350px;
+    position: relative;
+    left: 600px;
+}
+
+form {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }

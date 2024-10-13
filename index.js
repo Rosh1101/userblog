@@ -3,6 +3,7 @@ const path = require('path')
 const ejs = require('ejs')
 //const fs = require('fs');
 const router = require('./router/userrouter.js');
+const connectdb = require("./utils/db.js")
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -16,7 +17,13 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(router);
 
-app.listen( port,()=>{
-    console.log(`live on port: localhost:${port}`)
+
+connectdb().then(()=>{
+    app.listen( port,()=>{
+        console.log(`live on port: localhost:${port}`)
+    })
 })
+
+
+
 

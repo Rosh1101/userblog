@@ -1,5 +1,6 @@
 const fs = require('fs')
 const http = require('http')
+const User = require("../models/user-models")
 details = []
 
 
@@ -19,6 +20,8 @@ const register = async(req,res) =>{
     const{name,email,age,address} = req.body;
     const userdetails = {name,email,age,address}
     details.push(userdetails)
+
+    await User.create(userdetails)
     fs.appendFile('data.txt',`Name:${name}|Email:${email}|Age:${age}|address:${address}\n`,'utf-8',(err,data)=>{
         if(!err){
             console.log("inserted")

@@ -1,5 +1,6 @@
 const fs = require('fs')
 const http = require('http')
+const bcrypt = require('bcrypt')
 const User = require("../models/user-models")
 details = []
 
@@ -17,11 +18,25 @@ const home = async(req,res) =>{
 const register = async(req,res) =>{
     const ip = req.ip;
     console.log(ip)
-    const{name,email,age,address} = req.body;
-    const userdetails = {name,email,age,address}
+    const{name,password,email,age,address} = req.body;
+    const userdetails = {name,password,email,age,address}
     details.push(userdetails)
 
-    await User.create(userdetails)
+    const userExist = await User.findOne({email})
+
+    if(userExist){
+        res.status(400).send({msg:"user with this email exists"})
+    }else{
+        await User.create(userdetails)
+    }
+
+    //hash password
+    const saltRound = 10;
+    const hash_password = await bcrypt.hash(password,saltRound)
+
+    
+
+
     fs.appendFile('data.txt',`Name:${name}|Email:${email}|Age:${age}|address:${address}\n`,'utf-8',(err,data)=>{
         if(!err){
             console.log("inserted")

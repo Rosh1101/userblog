@@ -18,7 +18,10 @@ const home = async(req,res) =>{
 const register = async(req,res) =>{
     const ip = req.ip;
     console.log(ip)
+
     const{name,password,email,age,address} = req.body;
+    //hash password
+    // const hash_password = await bcrypt.hash(password,10)
     const userdetails = {name,password,email,age,address}
     details.push(userdetails)
 
@@ -30,9 +33,6 @@ const register = async(req,res) =>{
         await User.create(userdetails)
     }
 
-    //hash password
-    const saltRound = 10;
-    const hash_password = await bcrypt.hash(password,saltRound)
 
     
 
